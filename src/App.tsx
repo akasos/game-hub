@@ -15,7 +15,9 @@ function App() {
         <Show above="lg">
         <GridItem area="aside">aside</GridItem>
         </Show>
-        <GridItem area="main" ><GameGrid/></GridItem>
+        <GridItem area="main" >
+            <GameGrid/>
+        </GridItem>
       </Grid>
   )
 }
