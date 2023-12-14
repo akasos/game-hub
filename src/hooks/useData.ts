@@ -1,42 +1,42 @@
-import {useEffect, useState} from "react";
-import apiClient from "../services/apiClient";
-import {AxiosRequestConfig, CanceledError} from "axios";
+import { useEffect, useState } from "react"
 
+import { AxiosRequestConfig, CanceledError } from "axios"
 
-interface FetchResponse<T> {
+import apiClient from "../services/apiClient"
+
+export interface FetchResponse<T> {
     count: number,
     results: T[]
-
 }
 
 const useData = <T>(endpoint: string, requestConfig?: AxiosRequestConfig, deps?: any[]) => {
 
-    const [data, setData] = useState<T[]>([])
-    const [error, setError] = useState('')
-    const  [ isLoading, setIsLoading] = useState(false)
+  const [data, setData] = useState<T[]>([])
+  const [error, setError] = useState("")
+  const  [ isLoading, setIsLoading] = useState(false)
 
-    useEffect(() => {
+  useEffect(() => {
 
-        const controller = new AbortController()
+    const controller = new AbortController()
 
-        setIsLoading(true)
-        apiClient.get<FetchResponse<T>>(endpoint, {signal: controller.signal, ...requestConfig  })
-            .then(response => {
-                setData(response.data.results)
-                setIsLoading(false)
-            })
-            .catch(error => {
-                    if(error instanceof CanceledError) return
-                    setError(error.message)
-                    setIsLoading(false)
-                }
-            )
+    setIsLoading(true)
+    apiClient.get<FetchResponse<T>>(endpoint, { signal: controller.signal, ...requestConfig  })
+      .then(response => {
+        setData(response.data.results)
+        setIsLoading(false)
+      })
+      .catch(error => {
+        if (error instanceof CanceledError) return
+        setError(error.message)
+        setIsLoading(false)
+      }
+      )
 
-        return () => controller.abort()
+    return () => controller.abort()
 
-    }, deps ? [...deps] : [])
+  }, deps ? [...deps] : [])
 
-    return {data, error, isLoading}
+  return { data, error, isLoading }
 }
 
 export default useData
