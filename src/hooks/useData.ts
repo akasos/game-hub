@@ -6,6 +6,7 @@ import apiClient from "../services/apiClient"
 
 export interface FetchResponse<T> {
     count: number,
+    next: string | null
     results: T[]
 }
 
@@ -13,7 +14,7 @@ const useData = <T>(endpoint: string, requestConfig?: AxiosRequestConfig, deps?:
 
   const [data, setData] = useState<T[]>([])
   const [error, setError] = useState("")
-  const  [ isLoading, setIsLoading] = useState(false)
+  const  [isLoading, setIsLoading] = useState(false)
 
   useEffect(() => {
 
