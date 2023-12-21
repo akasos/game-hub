@@ -1,43 +1,44 @@
-import { useEffect, useState } from "react"
+export {}
+// import { useEffect, useState } from "react"
+//
+// import { AxiosRequestConfig, CanceledError } from "axios"
+//
+// import apiClient from "../services/apiClient"
+//
+// export interface FetchResponse<T> {
+//     count: number,
+//     next: string | null
+//     results: T[]
+// }
 
-import { AxiosRequestConfig, CanceledError } from "axios"
-
-import apiClient from "../services/apiClient"
-
-export interface FetchResponse<T> {
-    count: number,
-    next: string | null
-    results: T[]
-}
-
-const useData = <T>(endpoint: string, requestConfig?: AxiosRequestConfig, deps?: any[]) => {
-
-  const [data, setData] = useState<T[]>([])
-  const [error, setError] = useState("")
-  const  [isLoading, setIsLoading] = useState(false)
-
-  useEffect(() => {
-
-    const controller = new AbortController()
-
-    setIsLoading(true)
-    apiClient.get<FetchResponse<T>>(endpoint, { signal: controller.signal, ...requestConfig  })
-      .then(response => {
-        setData(response.data.results)
-        setIsLoading(false)
-      })
-      .catch(error => {
-        if (error instanceof CanceledError) return
-        setError(error.message)
-        setIsLoading(false)
-      }
-      )
-
-    return () => controller.abort()
-
-  }, deps ? [...deps] : [])
-
-  return { data, error, isLoading }
-}
-
-export default useData
+// const useData = <T>(endpoint: string, requestConfig?: AxiosRequestConfig, deps?: any[]) => {
+//
+//   const [data, setData] = useState<T[]>([])
+//   const [error, setError] = useState("")
+//   const  [isLoading, setIsLoading] = useState(false)
+//
+//   useEffect(() => {
+//
+//     const controller = new AbortController()
+//
+//     setIsLoading(true)
+//     apiClient.get<FetchResponse<T>>(endpoint, { signal: controller.signal, ...requestConfig  })
+//       .then(response => {
+//         setData(response.data.results)
+//         setIsLoading(false)
+//       })
+//       .catch(error => {
+//         if (error instanceof CanceledError) return
+//         setError(error.message)
+//         setIsLoading(false)
+//       }
+//       )
+//
+//     return () => controller.abort()
+//
+//   }, deps ? [...deps] : [])
+//
+//   return { data, error, isLoading }
+// }
+//
+// export default useData

@@ -7,7 +7,7 @@ import GameCard from "./GameCard"
 import GameCardContainer from "./GameCardContainer"
 import GameCardSkeleton from "./GameCardSkeleton"
 import { GameQuery } from "../App"
-import useGames from "../hooks/useGames"
+import useGames, { Game } from "../hooks/useGames"
 
 interface Props {
  gameQuery: GameQuery
@@ -37,7 +37,7 @@ const GameGrid = ({ gameQuery }: Props) => {
         )}
         {data?.pages.map((page, index) => (
           <React.Fragment key={index}>
-            {page.results.map(game => (
+            {page.results.map((game: Game) => (
               <GameCardContainer key={game.id}>
                 <GameCard game={game}/>
               </GameCardContainer>

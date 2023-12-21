@@ -1,6 +1,10 @@
 import axios, { AxiosRequestConfig } from "axios"
 
-import { FetchResponse } from "../hooks/useData"
+export interface FetchResponse<T> {
+  count: number,
+  next: string | null
+  results: T[]
+}
 
 //rawg username akasos pw codewithmosh1212!
 const axiosInstance = axios.create({
@@ -17,8 +21,9 @@ class ApiClient<T> {
     this.endpoint = endpoint
   }
 
-  getAll = (config: AxiosRequestConfig) => {
-    return axiosInstance.get<FetchResponse<T>>(this.endpoint, config).then(response => response.data)
+  getAll = async (config: AxiosRequestConfig) => {
+    const response = await axiosInstance.get<FetchResponse<T>>(this.endpoint, config)
+    return response.data
   }
 }
 

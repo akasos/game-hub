@@ -22,7 +22,7 @@ function GenreList({ onSelectGenre, selectedGenre }: Props) {
     <>
       <Heading fontSize="2xl" marginBottom={3}>Genre</Heading>
       <List>
-        {data?.results.map(genre => (
+        {data?.results.map((genre: Genre) => (
           <ListItem key={genre.id} paddingY="5px">
             <HStack>
               <Image objectFit="cover" boxSize="32px" borderRadius={8} src={getCroppedImageUrl(genre.image_background)}/>
