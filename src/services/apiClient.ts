@@ -14,6 +14,7 @@ const axiosInstance = axios.create({
 })
 
 class ApiClient<T> {
+
   endpoint: string
 
   constructor(endpoint: string) {
