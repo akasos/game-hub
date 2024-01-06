@@ -20,9 +20,13 @@ class ApiClient<T> {
   constructor(endpoint: string) {
     this.endpoint = endpoint
   }
-
   getAll = async (config: AxiosRequestConfig) => {
     const response = await axiosInstance.get<FetchResponse<T>>(this.endpoint, config)
+    return response.data
+  }
+
+  get = async (id: number | string) => {
+    const response = await axiosInstance.get<T>(this.endpoint + "/" + id)
     return response.data
   }
 }

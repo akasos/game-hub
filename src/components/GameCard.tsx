@@ -1,6 +1,7 @@
 import React from "react"
 
 import { Card, CardBody, Heading, HStack, Image } from "@chakra-ui/react"
+import { Link } from "react-router-dom"
 
 import CriticScore from "./CriticScore"
 import Emoji from "./Emoji"
@@ -21,7 +22,12 @@ const GameCard = ({ game }: Props) => {
           <PlatformIconList platforms={game.parent_platforms.map(platform => platform.platform)}/>
           <CriticScore score={game.metacritic}/>
         </HStack>
-        <Heading fontSize="2xl">{game.name}<Emoji rating={game.rating_top}/></Heading>
+        <Heading fontSize="2xl">
+          <Link to={"/games/" + game.slug}>
+            {game.name}
+          </Link>
+          <Emoji rating={game.rating_top}/>
+        </Heading>
       </CardBody>
     </Card>
 
