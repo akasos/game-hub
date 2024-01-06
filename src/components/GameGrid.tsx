@@ -6,7 +6,8 @@ import InfiniteScroll from "react-infinite-scroll-component"
 import GameCard from "./GameCard"
 import GameCardContainer from "./GameCardContainer"
 import GameCardSkeleton from "./GameCardSkeleton"
-import useGames, { Game } from "../hooks/useGames"
+import { Game } from "../entities/Game"
+import useGames from "../hooks/useGames"
 
 const GameGrid = () => {
   
