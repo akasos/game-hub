@@ -1,5 +1,5 @@
-import {Button, Menu, MenuButton, MenuItem, MenuList} from "@chakra-ui/react"
-import {BsChevronDown} from "react-icons/all"
+import { Button, Menu, MenuButton, MenuItem, MenuList } from "@chakra-ui/react"
+import { BsChevronDown } from "react-icons/all"
 
 import useGameQueryStore from "../store"
 

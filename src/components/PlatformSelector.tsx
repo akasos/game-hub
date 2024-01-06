@@ -1,7 +1,7 @@
 import React from "react"
 
-import {Button, Menu, MenuButton, MenuItem, MenuList} from "@chakra-ui/react"
-import {BsChevronDown} from "react-icons/all"
+import { Button, Menu, MenuButton, MenuItem, MenuList } from "@chakra-ui/react"
+import { BsChevronDown } from "react-icons/all"
 
 import usePlatform from "../hooks/usePlatform"
 import usePlatforms from "../hooks/usePlatforms"
