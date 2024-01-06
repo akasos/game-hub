@@ -7,7 +7,7 @@ import Layout from "./pages/Layout"
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: "/game-hub",
     element: <Layout/>,
     errorElement: <ErrorPage/>,
     children: [
