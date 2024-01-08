@@ -9,7 +9,7 @@ const apiClient = new ApiClient<Game>("/games")
 
 const useGames = () => {
 
-  const gameQuery =useGameQueryStore(s => s.gameQuery)
+  const gameQuery = useGameQueryStore(s => s.gameQuery)
     
   return useInfiniteQuery<FetchResponse<Game>, Error>({
     queryKey: ["games", gameQuery],
