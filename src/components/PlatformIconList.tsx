@@ -5,7 +5,7 @@ import { FaAndroid, FaApple, FaLinux, FaPlaystation, FaWindows, FaXbox } from "r
 import { MdPhoneIphone } from "react-icons/md"
 import { SiNintendoswitch } from "react-icons/si"
 
-import { Platform } from "../entities/Platform"
+import Platform from "../entities/Platform"
 
 interface Props {
     platforms: Platform[]
